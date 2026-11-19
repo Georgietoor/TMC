@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Communication Machine · Lavori</title>
+<meta name="description" content="Alcuni lavori di The Communication Machine: video, reel, social e comunicazione.">
+<meta name="robots" content="noindex"><!-- BOZZA: togliere questa riga quando la pagina è definitiva -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wdth,wght@125,700;125,800&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde:#D1F061; --grigio:#323031; --carta:#F5F6F0; --verde-chiaro:#E9F7B4;
+    --filetto:#696769; --scuro:#262425;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--grigio);color:var(--carta);font-family:Poppins,system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+  /* ---------- mirino (logo) ---------- */
+  .mirino{position:relative;display:inline-grid;place-items:center;aspect-ratio:1}
+  .mirino svg{position:absolute;inset:0;width:100%;height:100%}
+  .mirino span{font-family:Anton,sans-serif;color:var(--carta);line-height:1;letter-spacing:.01em}
+
+  /* ---------- testata ---------- */
+  header.top{position:sticky;top:0;z-index:5;background:rgba(50,48,49,.92);backdrop-filter:blur(8px);border-bottom:1px solid #3e3c3d}
+  header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  header.top .mirino{width:40px}
+  header.top .mirino span{font-size:15px}
+  header.top nav{display:flex;gap:22px;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+  header.top nav a{text-decoration:none;opacity:.8}
+  header.top nav a:hover{opacity:1;color:var(--verde)}
+
+  /* ---------- apertura ---------- */
+  .hero{padding:72px 0 64px;position:relative;overflow:hidden}
+  .hero .grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,48px);align-items:center}
+  .hero .mirino{width:clamp(110px,18vw,210px)}
+  .hero .mirino span{font-size:clamp(40px,6.8vw,80px)}
+  .logotipo{font-family:Archivo,sans-serif;font-stretch:125%;font-weight:800;text-transform:uppercase;line-height:.98;letter-spacing:-.02em;font-size:clamp(30px,6.4vw,84px)}
+  .logotipo .m{color:var(--verde)}
+  .hero p.intro{margin-top:40px;max-width:620px;font-size:clamp(16px,1.6vw,19px);color:#d9dad4}
+  .hero p.intro b{color:var(--verde);font-weight:600}
+  .puntini{position:absolute;right:24px;top:28px;width:150px;height:60px;opacity:.5;
+    background-image:radial-gradient(var(--verde) 1.6px,transparent 1.8px);background-size:15px 15px}
+
+  /* ---------- titoli di sezione ---------- */
+  .sez{padding:56px 0}
+  .sez h2{font-family:Anton,sans-serif;font-weight:400;font-size:clamp(40px,6vw,72px);line-height:1;text-transform:uppercase;letter-spacing:.01em}
+  .sez h2 em{font-style:normal;color:var(--verde)}
+  .sez .sotto{margin-top:10px;color:#bdbdb7;font-size:15px}
+  .etichetta{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--grigio);background:var(--verde);padding:4px 10px;border-radius:2px;margin-bottom:16px}
+
+  /* ---------- lavori ---------- */
+  .lavori{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:40px}
+  .lavoro{text-decoration:none;display:block}
+  .lavoro .img{position:relative;aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:var(--scuro)}
+  .lavoro .img .finto{position:absolute;inset:0}
+  .lavoro .img .finto::after{content:"IMMAGINE";position:absolute;left:0;right:0;top:calc(50% + 46px);text-align:center;font-size:10px;font-weight:600;letter-spacing:.16em;color:rgba(245,246,240,.55)}
+  .lavoro .angoli{position:absolute;left:18px;top:18px;width:calc(100% - 36px);height:calc(100% - 36px);pointer-events:none;opacity:.9;transition:all .25s}
+  .lavoro .play{position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:var(--verde);display:grid;place-items:center;transition:transform .2s}
+  .lavoro .play svg{width:22px;height:22px;margin-left:4px}
+  .lavoro:hover .play{transform:scale(1.1)}
+  .lavoro:hover .angoli{left:10px;top:10px;width:calc(100% - 20px);height:calc(100% - 20px)}
+  .lavoro .tipo{margin-top:16px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--verde)}
+  .lavoro h3{font-family:Archivo,sans-serif;font-stretch:125%;font-weight:700;font-size:19px;line-height:1.15;text-transform:uppercase;margin-top:4px}
+  .lavoro p{margin-top:6px;font-size:14px;color:#bdbdb7}
+
+  /* immagini finte: sfumature diverse */
+  .f1{background:radial-gradient(circle at 30% 30%,#6b6f4a,transparent 60%),linear-gradient(160deg,#3d3b3c,#1d1c1c)}
+  .f2{background:radial-gradient(circle at 70% 25%,#7e8a46,transparent 55%),linear-gradient(200deg,#454344,#222)}
+  .f3{background:radial-gradient(circle at 50% 70%,#5d5a5b,transparent 60%),linear-gradient(120deg,#2b2a2a,#151414)}
+  .f4{background:radial-gradient(circle at 25% 75%,#8d9a51,transparent 55%),linear-gradient(170deg,#3a3839,#1b1a1a)}
+  .f5{background:radial-gradient(circle at 75% 60%,#55524f,transparent 60%),linear-gradient(140deg,#433f3f,#1f1e1e)}
+  .f6{background:radial-gradient(circle at 40% 20%,#a5b75d,transparent 50%),linear-gradient(190deg,#363435,#181717)}
+
+  /* ---------- team ---------- */
+  .chiaro{background:var(--carta);color:var(--grigio)}
+  .chiaro .sotto{color:var(--filetto)}
+  .team{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:40px}
+  .persona .foto{aspect-ratio:1;border-radius:50%;background:var(--grigio);display:grid;place-items:center;font-family:Anton,sans-serif;font-size:56px;color:var(--verde);max-width:180px}
+  .persona h3{margin-top:16px;font-family:Archivo,sans-serif;font-stretch:125%;font-weight:800;font-size:18px;text-transform:uppercase}
+  .persona p{font-size:14px;color:var(--filetto)}
+
+  /* ---------- contatti ---------- */
+  .contatti{text-align:center;padding:80px 0}
+  .contatti h2{font-size:clamp(44px,8vw,96px)}
+  .bottoni{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:36px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:40px;font-weight:600;font-size:15px;text-decoration:none;border:2px solid var(--verde);transition:background .2s,color .2s}
+  .btn.pieno{background:var(--verde);color:var(--grigio)}
+  .btn:hover{background:var(--verde-chiaro);color:var(--grigio);border-color:var(--verde-chiaro)}
+  .btn.presto{border-color:var(--filetto);color:#9c9b97;cursor:default}
+  .btn.presto:hover{background:none;color:#9c9b97;border-color:var(--filetto)}
+
+  footer{border-top:1px solid #3e3c3d;padding:26px 0;font-size:12px;color:#9c9b97}
+  footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .bozza{position:fixed;left:12px;bottom:12px;z-index:9;background:#e8574c;color:#fff;font-size:11px;font-weight:600;letter-spacing:.1em;padding:6px 10px;border-radius:3px}
+
+  @media (max-width:860px){
+    .lavori{grid-template-columns:repeat(2,1fr)}
+    .team{grid-template-columns:repeat(2,1fr)}
+    header.top nav{gap:14px}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 16px}
+    .hero{padding:48px 0 44px}
+    .hero .grid{grid-template-columns:1fr}
+    .puntini{display:none}
+    .lavori{grid-template-columns:1fr;gap:36px}
+    header.top nav a.nasc{display:none}
+    .persona .foto{font-size:44px}
+  }
+</style>
+</head>
+<body>
+
+<!-- IL MIRINO: si usa più volte nella pagina -->
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="mirino" viewBox="0 0 100 100">
+    <path d="M4 26V4h22M74 4h22v22M96 74v22H74M26 96H4V74" fill="none" stroke="#D1F061" stroke-width="7"/>
+  </symbol>
+  <symbol id="angoli" viewBox="0 0 100 100" preserveAspectRatio="none">
+    <path d="M1 12V1h11M88 1h11v11M99 88v11H88M12 99H1V88" fill="none" stroke="#D1F061" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+  </symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#" class="mirino" aria-label="The Communication Machine"><svg><use href="#mirino"/></svg><span>TCM</span></a>
+    <nav>
+      <a href="#lavori">Lavori</a>
+      <a href="#team" class="nasc">Team</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="puntini"></div>
+  <div class="wrap">
+    <div class="grid">
+      <div class="mirino"><svg><use href="#mirino"/></svg><span>TCM</span></div>
+      <h1 class="logotipo">The<br>Communication<br><span class="m">Machine</span></h1>
+    </div>
+    <p class="intro">Ciao! Se sei qui hai inquadrato il QR del nostro planner. 👋<br>
+      Qui trovi <b>alcuni dei lavori</b> che abbiamo fatto: video, reel, social e comunicazione per aziende e professionisti.</p>
+  </div>
+</section>
+
+<section class="sez" id="lavori">
+  <div class="wrap">
+    <span class="etichetta">Portfolio</span>
+    <h2>I nostri <em>lavori</em></h2>
+    <p class="sotto">Tocca un lavoro per guardarlo.</p>
+
+    <div class="lavori">
+      <!-- LAVORO 1 — sostituire href, immagine, testi -->
+      <a class="lavoro" href="https://www.youtube.com/watch?v=ESEMPIO1" target="_blank" rel="noopener">
+        <div class="img"><div class="finto f1"></div><svg class="angoli"><use href="#angoli"/></svg>
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z" fill="#323031"/></svg></div></div>
+        <div class="tipo">Reel Instagram</div>
+        <h3>Nome cliente</h3>
+        <p>Una riga che racconta il lavoro.</p>
+      </a>
+      <!-- LAVORO 2 -->
+      <a class="lavoro" href="https://www.youtube.com/watch?v=ESEMPIO2" target="_blank" rel="noopener">
+        <div class="img"><div class="finto f2"></div><svg class="angoli"><use href="#angoli"/></svg>
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z" fill="#323031"/></svg></div></div>
+        <div class="tipo">Video aziendale</div>
+        <h3>Nome cliente</h3>
+        <p>Una riga che racconta il lavoro.</p>
+      </a>
+      <!-- LAVORO 3 -->
+      <a class="lavoro" href="https://vimeo.com/ESEMPIO3" target="_blank" rel="noopener">
+        <div class="img"><div class="finto f3"></div><svg class="angoli"><use href="#angoli"/></svg>
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z" fill="#323031"/></svg></div></div>
+        <div class="tipo">Spot</div>
+        <h3>Nome cliente</h3>
+        <p>Una riga che racconta il lavoro.</p>
+      </a>
+      <!-- LAVORO 4 -->
+      <a class="lavoro" href="https://www.instagram.com/p/ESEMPIO4" target="_blank" rel="noopener">
+        <div class="img"><div class="finto f4"></div><svg class="angoli"><use href="#angoli"/></svg>
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z" fill="#323031"/></svg></div></div>
+        <div class="tipo">Social media</div>
+        <h3>Nome cliente</h3>
+        <p>Una riga che racconta il lavoro.</p>
+      </a>
+      <!-- LAVORO 5 -->
+      <a class="lavoro" href="https://www.youtube.com/watch?v=ESEMPIO5" target="_blank" rel="noopener">
+        <div class="img"><div class="finto f5"></div><svg class="angoli"><use href="#angoli"/></svg>
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z" fill="#323031"/></svg></div></div>
+        <div class="tipo">Intervista</div>
+        <h3>Nome cliente</h3>
+        <p>Una riga che racconta il lavoro.</p>
+      </a>
+      <!-- LAVORO 6 -->
+      <a class="lavoro" href="https://www.youtube.com/watch?v=ESEMPIO6" target="_blank" rel="noopener">
+        <div class="img"><div class="finto f6"></div><svg class="angoli"><use href="#angoli"/></svg>
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z" fill="#323031"/></svg></div></div>
+        <div class="tipo">Evento</div>
+        <h3>Nome cliente</h3>
+        <p>Una riga che racconta il lavoro.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="sez chiaro" id="team">
+  <div class="wrap">
+    <h2>Cresciamo <em style="color:var(--grigio);background:var(--verde);padding:0 .12em">assieme!</em></h2>
+    <p class="sotto">Le persone dietro la macchina.</p>
+    <div class="team">
+      <div class="persona"><div class="foto">V</div><h3>Vittoria</h3><p>Social Media Manager</p></div>
+      <div class="persona"><div class="foto">M</div><h3>Michele</h3><p>Video Editor</p></div>
+      <div class="persona"><div class="foto">G</div><h3>Georgia</h3><p>Videomaker</p></div>
+      <div class="persona"><div class="foto">C</div><h3>Cristina</h3><p>Digital Marketing</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contatti" id="contatti">
+  <div class="wrap sez" style="padding:0">
+    <h2>Parliamo <em>del tuo</em><br>progetto</h2>
+    <div class="bottoni">
+      <a class="btn pieno" href="mailto:email@esempio.it">✉ email@esempio.it</a>
+      <a class="btn" href="tel:+390000000000">☎ 000 000 0000</a>
+      <a class="btn" href="https://wa.me/390000000000" target="_blank" rel="noopener">WhatsApp</a>
+      <span class="btn presto">Instagram · presto</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2027 The Communication Machine</span>
+    <span>Planner 2027</span>
+  </div>
+</footer>
+
+<div class="bozza">BOZZA · LINK FINTI</div>
+</body>
+</html>
